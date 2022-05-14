@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
-import { countriesLevelContext } from '../context/countriesLevelContext.js';
-import CountryDetails from './CountryDetails';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AppLevelContext } from '../context/AppLevelContext.js';
 
 const CountryList = () => {
 
-   
+  const context = useContext(AppLevelContext);
 
   return (
-    
     <div>
-        <CountryDetails />
-        </div>
+    <input onChange={context.eventHandler} type='text' placeholder='search'/>
+    {context.countries
+        .filter(country => country.name.toLowerCase().includes(context.search))
+        .map((country) => {
+            return (
+                <div key={country.name} className="country-card">
+                    <Link to={`/countries/${country.alpha3Code}`} >
+                        <h1>{country.name} {country.alpha3Code}</h1>
+                    </Link>
+                </div>
+            )
+        })}
+    </div>
   )
-}
+};
 
-export default CountryList
+export default CountryList;

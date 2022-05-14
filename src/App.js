@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { countriesLevelContext } from './context/countriesLevelContext';
-import './App.css';
+import { AppLevelContext } from './context/AppLevelContext';
 import Country from './components/Country';
 import CountryList from './components/CountryList';
-import Home from './components/Home';
+import Home from './views/Home';
 
 function App() {
 
@@ -14,28 +13,27 @@ function App() {
 
   useEffect(() => {
 
-      const fetchCountries = async () => {
+    const fetchCountries = async () => {
 
-          const url = 'https://restcountries.com/v2/all';
+      const url = 'https://restcountries.com/v2/all';
       
-          const response = await axios.get(url);
-          setCountries(response.data);
-      };
+      const response = await axios.get(url);
+      setCountries(response.data);
+    };
 
-      fetchCountries ();
+    fetchCountries ();
 
   }, []);
 
 
   const eventHandler = (e) => {
 
-      console.log(e.target.value);
-      setSearch(e.target.value.toLowerCase());
+    setSearch(e.target.value.toLowerCase());
   };
   
 
   return (
-    <countriesLevelContext.Provider value={{countries, search, eventHandler}}>
+    <AppLevelContext.Provider value={{countries, search, eventHandler}}>
       <Router>
       <div className="App">
         <Routes>
@@ -45,8 +43,8 @@ function App() {
         </Routes>
       </div>
       </Router>
-    </countriesLevelContext.Provider>
+    </AppLevelContext.Provider>
   );
-}
+};
 
 export default App;

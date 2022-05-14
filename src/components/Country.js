@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { countriesLevelContext } from '../context/countriesLevelContext';
+import { AppLevelContext } from '../context/AppLevelContext';
 
 const Country = () => {
 
-    const context = useContext(countriesLevelContext);
-    
+  const context = useContext(AppLevelContext);
+  const { alpha3Code } = useParams();
 
-    const { alpha3Code } = useParams();
-
-    const selectedCountry = context.countries.find(country => country.alpha3Code === alpha3Code)
-    const { flag, name, capital } = selectedCountry
+  const selectedCountry = context.countries.find(country => country.alpha3Code === alpha3Code);
+  const { flag, name, capital } = selectedCountry;
 
   return (    
     <div>
@@ -18,7 +16,7 @@ const Country = () => {
         <h1>{name}</h1>
         <h2>{capital}</h2>
     </div>
-  )
-}
+  );
+};
 
-export default Country
+export default Country;
