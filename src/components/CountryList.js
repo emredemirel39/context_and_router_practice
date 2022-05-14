@@ -4,22 +4,26 @@ import { AppLevelContext } from '../context/AppLevelContext.js';
 
 const CountryList = () => {
 
-  const context = useContext(AppLevelContext);
+  const context = useContext(AppLevelContext);  
 
   return (
-    <div>
-    <input onChange={context.eventHandler} type='text' placeholder='search'/>
-    {context.countries
-        .filter(country => country.name.toLowerCase().includes(context.search))
-        .map((country) => {
+    <div className='country-list'>
+        <input onChange={context.eventHandler} type='text' placeholder='search'/>
+        <div className="country-wrapper">
+            {context.countries
+            .filter(country => country.name.toLowerCase().includes(context.search))
+            .map((country) => {
             return (
-                <div key={country.name} className="country-card">
+                <React.Fragment key={country.name} >
                     <Link to={`/countries/${country.alpha3Code}`} >
-                        <h1>{country.name} {country.alpha3Code}</h1>
+                        <div className="country-card">
+                            <h1>{country.name}</h1>
+                        </div>
                     </Link>
-                </div>
+                </React.Fragment>
             )
         })}
+        </div>
     </div>
   )
 };

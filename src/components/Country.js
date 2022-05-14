@@ -8,13 +8,14 @@ const Country = () => {
   const { alpha3Code } = useParams();
 
   const selectedCountry = context.countries.find(country => country.alpha3Code === alpha3Code);
-  const { flag, name, capital } = selectedCountry;
+  const { flag, name, capital, population } = selectedCountry;
 
   return (    
-    <div>
+    <div className='country-details'>
         <img src={flag} alt={`${alpha3Code}`} />
         <h1>{name}</h1>
         <h2>{capital}</h2>
+        <h2>{population}</h2>
     </div>
   );
 };

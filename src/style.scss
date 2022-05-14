@@ -1,3 +1,9 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +13,89 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-  text-align: center;
+a{
+  text-decoration: none;
+  cursor: pointer;
 }
 
+// .App {
+//   text-align: center;
+// }
+.App{
+  padding: 10px 2%;
+}
+
+.home-page{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.country-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  input{
+    width: 400px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 18px;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid grey;
+  }
+
+  .country-wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .country-card{
+    font-size: 12px;
+    width: 200px;
+    min-height: 120px;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid grey;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(./assets/images/globe-2.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    h1{
+      color: white;
+    }
+  }
+
+  .country-card:hover{
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(./assets/images/globe-2.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.country-details{
+  padding: 0 2%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  img{
+    width: 220px;
+  }
+}
